@@ -1,0 +1,48 @@
+{
+  // Dev Containerの名称設定
+  "name": "Amazon Linux Python",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [
+    5432
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "charliermarsh.ruff",
+        "MS-CEINTL.vscode-language-pack-ja",
+        "shd101wyy.markdown-preview-enhanced",
+        "DavidAnson.vscode-markdownlint",
+        "humao.rest-client",
+        "eamodio.gitlens",
+        "hediet.vscode-drawio",
+        "streetsidesoftware.code-spell-checker",
+        "uctakeoff.vscode-counter",
+        "42Crunch.vscode-openapi",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "ruff.organizeImports": false,
+        "ruff.format.args": [
+          "--config=pyproject.toml"
+        ],
+        "markdown-preview-enhanced.plantumlJarPath": "/usr/local/bin/plantuml.jar",
+        "openapi.defaultPreviewRenderer": "redoc"
+      }
+    }
+  },
+  // コンテナ内の実行ユーザー設定
+  "remoteUser": "ec2-user"
+}
