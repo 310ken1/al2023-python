@@ -7,7 +7,8 @@ RUN dnf update -y \
     sudo \
     git \
     java \
-    graphviz
+    graphviz \
+    postgresql15
 
 COPY .devcontainer/plantuml.jar /usr/local/bin/plantuml.jar
 
@@ -17,3 +18,4 @@ USER ec2-user
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 RUN echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc
+RUN echo 'uv sync' >> ~/.bashrc

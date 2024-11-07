@@ -26,6 +26,7 @@
         "ms-azuretools.vscode-docker"
       ],
       "settings": {
+        // python設定
         "[python]": {
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
@@ -34,11 +35,25 @@
           },
           "editor.defaultFormatter": "charliermarsh.ruff"
         },
+        // テスト設定
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+          "tests",
+          "--cov=src",
+          "--cov-report=xml:coverage.xml"
+        ],
+        "python.experiments.optInto": [
+          "pythonTestAdapter"
+        ],
+        // リンタ設定
         "ruff.organizeImports": false,
         "ruff.format.args": [
           "--config=pyproject.toml"
         ],
+        // Markdown Preview Enhanced設定
         "markdown-preview-enhanced.plantumlJarPath": "/usr/local/bin/plantuml.jar",
+        // OpenAPI Editor設定
         "openapi.defaultPreviewRenderer": "redoc"
       }
     }

@@ -4,7 +4,19 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+
+dependencies = [
+    "boto3>=1.35.54",
+    "marshmallow>=3.23.1",
+    "pg8000>=1.31.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+]
 
 [tool.ruff]
 line-length = 120
@@ -39,3 +51,10 @@ max-args = 6
 
 [tool.ruff.pydocstyle]
 convention = "google"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src", "src/api"
+]
+testpaths = ["tests",]
+disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true
