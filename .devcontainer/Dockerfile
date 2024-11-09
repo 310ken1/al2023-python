@@ -8,6 +8,7 @@ RUN dnf update -y \
     git \
     java \
     graphviz \
+    ipa-gothic-fonts \
     postgresql15
 
 COPY .devcontainer/plantuml.jar /usr/local/bin/plantuml.jar
