@@ -1,6 +1,8 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
-RUN dnf update -y \
+# パッケージインストール
+RUN --mount=type=cache,target=/var/cache/dnf \
+    dnf update -y \
     && dnf install -y \
     tar \
     gzip \
@@ -11,12 +13,24 @@ RUN dnf update -y \
     ipa-gothic-fonts \
     postgresql15
 
-COPY .devcontainer/plantuml.jar /usr/local/bin/plantuml.jar
+# PlantUMLインストール
+ARG plantuml="https://github.com/plantuml/plantuml/releases/download/v1.2024.7/plantuml-1.2024.7.jar"
+RUN curl -LsSf ${plantuml} -o /usr/local/bin/plantuml.jar
 
-RUN adduser ec2-user
-RUN echo 'ec2-user ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
-USER ec2-user
+# ユーザ追加
+ARG user="ec2-user"
+RUN adduser ${user}
+RUN echo "${user} ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+USER ${user}
+WORKDIR /home/${user}
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc
-RUN echo 'uv sync' >> ~/.bashrc
+# 依存関係（パッケージ）のインストール
+# https://docs.astral.sh/uv/guides/integration/docker/#developing-in-a-container
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy
+RUN --mount=from=ghcr.io/astral-sh/uv,source=/uv,target=/bin/uv \
+    --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-editable
+

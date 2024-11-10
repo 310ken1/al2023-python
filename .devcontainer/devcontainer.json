@@ -35,6 +35,9 @@
           },
           "editor.defaultFormatter": "charliermarsh.ruff"
         },
+        // インタプリタ設定
+        "python.terminal.activateEnvInCurrentTerminal": true,
+        "python.defaultInterpreterPath": "~/.venv/bin/python",
         // テスト設定
         "python.testing.unittestEnabled": false,
         "python.testing.pytestEnabled": true,
