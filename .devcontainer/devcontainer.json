@@ -23,7 +23,9 @@
         "uctakeoff.vscode-counter",
         "42Crunch.vscode-openapi",
         "ms-azuretools.vscode-docker",
-        "TakumiI.markdowntable"
+        "TakumiI.markdowntable",
+        "amazonwebservices.aws-toolkit-vscode",
+        "njpwerner.autodocstring"
       ],
       "settings": {
         // python設定
