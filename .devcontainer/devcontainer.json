@@ -28,6 +28,8 @@
         "njpwerner.autodocstring"
       ],
       "settings": {
+        // 自動保存
+        "files.autoSave": "afterDelay",
         // python設定
         "[python]": {
           "editor.formatOnSave": true,
