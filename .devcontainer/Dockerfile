@@ -1,4 +1,5 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+ARG platform
+FROM --platform=${platform} amazonlinux:2023
 
 # パッケージインストール
 RUN --mount=type=cache,target=/var/cache/dnf \
@@ -27,10 +28,14 @@ WORKDIR /home/${user}
 # 依存関係（パッケージ）のインストール
 # https://docs.astral.sh/uv/guides/integration/docker/#developing-in-a-container
 ENV UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy
+    UV_LINK_MODE=copy \
+    DOCKER_DEFAULT_PLATFORM=${platform} 
 RUN --mount=from=ghcr.io/astral-sh/uv,source=/uv,target=/bin/uv \
-    --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=cache,target=/root/.cache/uv \ 
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-editable
-
+    if [ -f "uv.lock" ]; then \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    uv sync --frozen --no-install-project --no-editable; \
+    else \
+    uv sync --no-install-project --no-editable; \
+    fi

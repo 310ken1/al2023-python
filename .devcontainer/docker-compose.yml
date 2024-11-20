@@ -1,18 +1,29 @@
-version: '3.8'
-
 services:
+  qemu-setup:
+    image: multiarch/qemu-user-static
+    container_name: qemu-setup
+    privileged: true
+    command: [ "--reset", "-p", "yes" ]
+    # 実行後にコンテナを自動的に削除するオプション
+    restart: "no"
+    deploy:
+      replicas: ${COMPOSE_ENV_ENABLE_QEMU:-0}
+
   app:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-
+      platforms:
+        - ${COMPOSE_ENV_PLATFORM}
+      args:
+        platform: ${COMPOSE_ENV_PLATFORM}
     volumes:
       - ../..:/workspaces:cached
-
     # コンテナを起動したままにする
-    command: sleep infinity
-
+    command: [ "sleep", "infinity" ]
     network_mode: service:db
+    depends_on:
+      - qemu-setup
 
   db:
     image: postgres:latest
