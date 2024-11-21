@@ -1,5 +1,5 @@
 ARG platform
-FROM --platform=${platform} amazonlinux:2023
+FROM --platform=${platform} public.ecr.aws/amazonlinux/amazonlinux:2023-minimal
 
 # パッケージインストール
 RUN --mount=type=cache,target=/var/cache/dnf \
@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/var/cache/dnf \
     java \
     graphviz \
     ipa-gothic-fonts \
-    postgresql15
+    postgresql15 && dnf clean all
 
 # PlantUMLインストール
 ARG plantuml="https://github.com/plantuml/plantuml/releases/download/v1.2024.7/plantuml-1.2024.7.jar"
