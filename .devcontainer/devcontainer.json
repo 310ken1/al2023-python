@@ -10,22 +10,28 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "MS-CEINTL.vscode-language-pack-ja",
+        "PKief.material-icon-theme",
+        "streetsidesoftware.code-spell-checker",
+        "alefragnani.Bookmarks",
+        "ms-azuretools.vscode-docker",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-python.debugpy",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.vscodeintellicode-completions",
         "charliermarsh.ruff",
-        "MS-CEINTL.vscode-language-pack-ja",
+        "njpwerner.autodocstring",
+        "uctakeoff.vscode-counter",
+        "usernamehw.errorlens",
+        "amazonwebservices.aws-toolkit-vscode",
         "shd101wyy.markdown-preview-enhanced",
         "DavidAnson.vscode-markdownlint",
+        "TakumiI.markdowntable",
+        "mushan.vscode-paste-image",
         "humao.rest-client",
         "hediet.vscode-drawio",
-        "streetsidesoftware.code-spell-checker",
-        "uctakeoff.vscode-counter",
-        "42Crunch.vscode-openapi",
-        "ms-azuretools.vscode-docker",
-        "TakumiI.markdowntable",
-        "amazonwebservices.aws-toolkit-vscode",
-        "njpwerner.autodocstring"
+        "42Crunch.vscode-openapi"
       ],
       "settings": {
         // 自動保存
