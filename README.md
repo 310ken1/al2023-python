@@ -72,17 +72,34 @@
 
 4. 以下が表示されるので「コンテナーを再度開く」を選択する  
 
-    <img src="images/ReadMe_Container1.png" width="400px">  
-    もしくは
-    Ctrl+Shift+P で「Dev Containers: ReOpen in Container」を実行する  
+    <img src="images/ReadMe_Container1.png" width="400px"></br>
+    もしくは Ctrl+Shift+P で「Dev Containers: ReOpen in Container」を実行する  
     <img src="images/ReadMe_Container2.png" width="400px">  
 
 ## 実行
 
-### ローカル実行
+### ローカル環境
 
 - デプロイ
 
     ```cmd
     AWS_ENDPOINT_URL=http://localstack:4566 chalice-local deploy
+    ```
+
+### AWS環境
+
+- 事前準備
+    1. 以下に従い、AWS CLI をセットアップする
+        <https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/getting-started-quickstart.html>
+
+- デプロイ
+
+    ```cmd
+    chalice deploy
+    ```
+
+- デプロイ削除
+
+    ```cmd
+    chalice delete
     ```
