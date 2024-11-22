@@ -1,0 +1,19 @@
+# マニュアル
+# https://github.com/Huachao/vscode-restclient
+#
+@scheme=https
+@authority=
+@path=api
+@url={{scheme}}://{{authority}}/{{path}}/
+
+###
+GET {{url}}/hello/test
+
+### 
+POST {{url}}/users
+Accept: application/json
+Content-type: application/json; charset=utf-8
+
+{
+    "test": "test_user"
+}
