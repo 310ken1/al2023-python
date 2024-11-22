@@ -27,7 +27,8 @@ docstring-code-format = true
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "INP001"
+    "INP001",  # __init__.pyがない
+    "EXE002",  # シバンがない
 ]
 unfixable = [
     
