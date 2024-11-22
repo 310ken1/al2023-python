@@ -4,8 +4,7 @@ services:
     container_name: qemu-setup
     privileged: true
     command: [ "--reset", "-p", "yes" ]
-    # 実行後にコンテナを自動的に削除するオプション
-    restart: "no"
+    restart: "no" # 実行後にコンテナを自動的に削除するオプション
     deploy:
       replicas: ${COMPOSE_ENV_ENABLE_QEMU:-0}
 
@@ -19,9 +18,7 @@ services:
         platform: ${COMPOSE_ENV_PLATFORM}
     volumes:
       - ../..:/workspaces:cached
-    # コンテナを起動したままにする
-    command: [ "sleep", "infinity" ]
-    network_mode: service:db
+    command: [ "sleep", "infinity" ] # コンテナを起動したままにする
     depends_on:
       - qemu-setup
 
@@ -36,6 +33,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
+    deploy:
+      replicas: ${COMPOSE_ENV_ENABLE_POSTGRES:-0}
 
 volumes:
   postgres-data:
