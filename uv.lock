@@ -8,6 +8,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "boto3" },
     { name = "chalice" },
+    { name = "chalice-local" },
     { name = "marshmallow" },
     { name = "pg8000" },
 ]
@@ -23,6 +24,7 @@ dev = [
 requires-dist = [
     { name = "boto3", specifier = ">=1.35.54" },
     { name = "chalice", specifier = ">=1.31.2" },
+    { name = "chalice-local", specifier = ">=0.1.1" },
     { name = "marshmallow", specifier = ">=3.23.1" },
     { name = "pg8000", specifier = ">=1.31.2" },
 ]
@@ -115,6 +117,16 @@ wheels = [
 ]
 
 [[package]]
+name = "chalice-local"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "chalice" },
+    { name = "localstack-client" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1c/88/c947b5ced6206402af58febead1001f0f4a7a4f147e38c88f575ee53da4e/chalice-local-0.1.1.tar.gz", hash = "sha256:1e8940b573f86e913ef2f87a5e81d4dca5ccebdd63d58432ab789a763a9eb783", size = 3248 }
+
+[[package]]
 name = "click"
 version = "8.1.7"
 source = { registry = "https://pypi.org/simple" }
@@ -196,6 +208,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b4
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256 },
 ]
+
+[[package]]
+name = "localstack-client"
+version = "2.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "boto3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c4/40/6858a5fe70654ef4878188e0c330c8a22ce4dfc457e09231cb82228de075/localstack_client-2.7.tar.gz", hash = "sha256:14993119901a4bcbef7c32d899b24f4a58a875a6765693edf1064d66b8a68408", size = 11075 }
 
 [[package]]
 name = "marshmallow"

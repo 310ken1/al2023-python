@@ -7,7 +7,6 @@ requires-python = "==3.12.*"
 
 dependencies = [
     "boto3>=1.35.54",
-    "chalice>=1.31.2",
     "marshmallow>=3.23.1",
     "pg8000>=1.31.2",
 ]
@@ -17,6 +16,8 @@ dev = [
     "pytest>=8.3.3",
     "pytest-cov>=6.0.0",
     "pytest-mock>=3.14.0",
+    "chalice-local>=0.1.1",
+    "chalice>=1.31.2",
 ]
 
 [tool.ruff]
