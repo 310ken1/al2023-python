@@ -12,6 +12,7 @@ RUN --mount=type=cache,target=/var/cache/dnf \
     java \
     graphviz \
     ipa-gothic-fonts \
+    aws-cli \
     postgresql15 && dnf clean all
 
 # PlantUMLインストール
@@ -19,7 +20,7 @@ ARG plantuml="https://github.com/plantuml/plantuml/releases/download/v1.2024.7/p
 RUN curl -LsSf ${plantuml} -o /usr/local/bin/plantuml.jar
 
 # ユーザ追加
-ARG user="ec2-user"
+ARG user
 RUN adduser ${user}
 RUN echo "${user} ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${user}

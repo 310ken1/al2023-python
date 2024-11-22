@@ -16,8 +16,10 @@ services:
         - ${COMPOSE_ENV_PLATFORM}
       args:
         platform: ${COMPOSE_ENV_PLATFORM}
+        user: ${COMPOSE_ENV_USER_DIR}
     volumes:
       - ../..:/workspaces:cached
+      - ${USERPROFILE}/.aws:/home/${COMPOSE_ENV_USER_DIR}/.aws:ro
     command: [ "sleep", "infinity" ] # コンテナを起動したままにする
     depends_on:
       - qemu-setup
